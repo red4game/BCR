@@ -1,0 +1,18 @@
+<mat-grid-list class="tile" cols="{{nbCols(toInt(comServicve.nbcomediens))}}" rowHeight="2:1" gutterSize="5px">
+  <mat-grid-tile  *ngFor="let com of this.comServicve.comediens">
+    <mat-card class="my-card">
+      <mat-card-title class="ComTitle" [ngStyle]="{'border': com.talking ? '10px solid lime' : '10px solid red'}">{{com.name}} ({{com.key}})</mat-card-title>
+      <mat-card-content class="ComContent" [ngStyle]="{'background-color':com.color}" >
+        <div class="TimeDisplay">
+          {{com.time.hour}}:{{com.time.minute}}:{{com.time.second}}
+        </div>
+        <div class="TimeAdds">
+          <button class="ButtonAddTime" mat-raised-button color="accent" (click)="com.removeSeconds(300)">-5m</button>
+          <button class="ButtonAddTime" mat-raised-button color="accent" (click)="com.removeSeconds(120)">-2m</button>
+          <button class="ButtonAddTime" mat-raised-button color="accent" (click)="com.addSeconds(120)">+2m</button>
+          <button class="ButtonAddTime" mat-raised-button color="accent" (click)="com.addSeconds(300)">+5m</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

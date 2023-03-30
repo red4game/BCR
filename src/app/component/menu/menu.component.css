@@ -1,0 +1,15 @@
+.Menu-FormField {
+  display: flex;
+  justify-content: space-between;
+  max-width: 70%;
+  background: #A0C5E8;
+  padding: 5px 0px;
+  border: solid black;
+  font-size: 20px;
+}
+
+.input-headline {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 400;
+}

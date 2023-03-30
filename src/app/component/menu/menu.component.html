@@ -1,0 +1,44 @@
+<div class="Menu-Container" xmlns="http://www.w3.org/1999/html">
+    <div>
+
+      <mat-form-field appearance="fill"
+                      [floatLabel]="getFloatLabelValue()">
+        <mat-label>Comédiens </mat-label>
+      <input type="number" matInput [min]="1" [max]="16" [(ngModel)]="this.comServicve.nbcomediens" (change)="this.comServicve.changeArraySize()" placeholder="Nombre">
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="toInt(this.comServicve.nbcomediens)>=1 && toInt(this.comServicve.nbcomediens)<=16">
+    <div class="Menu-FormField"  *ngFor="let _ of [].constructor(this.comServicve.nbcomediens);let i = index;">
+      <label>Comédien n° {{i}}</label>
+      <mat-form-field appearance="fill" [floatLabel]="getFloatLabelValue()">
+        <mat-label>Nom/Pseudo</mat-label>
+        <input [(ngModel)]="this.comServicve.comediens[i].name" matInput placeholder="Fill the name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [floatLabel]="getFloatLabelValue()">
+        <mat-label>Couleur</mat-label>
+        <input matInput [(ngModel)]="this.comServicve.comediens[i].color" [ngxMatColorPicker]="picker" [disabled]="disabled">
+        <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+        <ngx-mat-color-picker #picker [touchUi]="touchUi" [color]="colorTheme"></ngx-mat-color-picker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [floatLabel]="getFloatLabelValue()">
+        <mat-label>Key bind</mat-label>
+        <input matInput [(ngModel)]="this.comServicve.comediens[i].key" placeholder="Put 1 key" [maxLength]="1">
+      </mat-form-field>
+
+      <div>
+        <label>Temps en Heures | Minutes | Secondes</label>
+        <ngb-timepicker [(ngModel)]="this.comServicve.comediens[i].time" [seconds]="seconds"></ngb-timepicker>
+      </div>
+
+    </div>
+
+    </div>
+  <br>
+  <button mat-raised-button color="primary" routerLink="/parole" >Submit informations</button>
+
+
+
+</div>
