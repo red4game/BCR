@@ -60,7 +60,10 @@ export class Comedien {
 
   removeSeconds(nbs: number){
     let total = 3600 * this.time.hour + 60*this.time.minute + this.time.second - nbs
-    if (total < 0){total = 0;}
+    if (total < 0){
+       total = 0;
+       this.pauseTimer();
+    }
     let seconds = total%60
     let minutes = Math.floor(total/60) % 60
     let hour = Math.floor(total/3600)
